@@ -1,0 +1,3 @@
+1.create react app online_editor
+2. Install dependancies codemirror, react-codemirror2, react-fontawesome
+3. create component Editor and import that into App Component
