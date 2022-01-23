@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+
+body {
+  margin: 0;
+}
+.top-pane {
+  background-color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pane {
+  height : 50vh;
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.editor-container {
+  flex-grow: 1;
+  flex-basis: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: .5rem;
+  background-color: burlywood;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: cadetblue;
+  color: #fff;
+  padding: .5rem .5rem .5rem .5rem;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.code-mirror-wrapper {
+  flex-grow: 1;
+  border-top-right-radius: .5rem;
+  border-top-left-radius: .5rem;
+  overflow: hidden;
 }
+
+.CodeMirror {
+  height: 100% !important;
+}
+
+.editor-container.collapsed {
+  flex-grow: 0;
+}
+/* .top-header {}
+.top-header .clear-all-btn {}
+.top-header .clear-all-btn:hover {}
+.pane {}
+.editor-container {}
+
+.editor-container.collapsed {}
+ 
+.editor-container.collapsed .CodeMirror-scroll {
+  position: absolute;
+  overflow: hidden !important;
+}
+ 
+.CodeMirror {
+  height: 100% !important;
+}
+ 
+.code-mirror-wrapper {}
+.expand-collapse-btn {}
+.ct {}
+.ti {}
+ 
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url(./font/Roboto-Regular.ttf) format("truetype");
+} */

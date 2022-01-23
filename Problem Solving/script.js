@@ -73,22 +73,46 @@ margesortarray(nums1, nums2);
 // Input: nums = [2,0,2,1,1,0]
 // Output: [0,0,1,1,2,2]
 
-   function sortcolors(arr)
-   {
-       debugger;
-           let length = arr.length;
-    
-           for (let j = 0; j < length - 1; j++) {
-               if (arr[j] > arr[j + 1]) {
-                   let temp = arr[j];
-                   arr[j] = arr[j + 1];
-                   arr[j + 1] = temp;
-                   j = -1;
-               }
-           }
-      
-           console.log(arr);
-   }
-    
-   let arr=[2,0,2,1,1,0];
-   sortcolors(arr);
+function sortcolors(arr) {
+
+    for (let i = 1; i < arr.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (arr[i] < arr[j]) {
+                var x = arr[i];
+                arr[i] = arr[j];
+                arr[j] = x;
+            }
+        }
+    }
+    console.log(arr);
+}
+
+let arr = [2,0,2,1,1,0];
+sortcolors(arr);
+
+
+// https://leetcode.com/problems/longest-consecutive-sequence/
+
+function sortarray(nums) {
+    count = 1;
+    for (let i = 1; i < nums.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[i] < nums[j]) {
+                var x = nums[i];
+                nums[i] = nums[j];
+                nums[j] = x;
+            }
+        }
+    }
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i + 1] === nums[i] + 1){
+            count = count + 1;
+        }
+    }
+    console.log(count);
+}
+
+sortarray([0,3,7,2,5,8,4,6,0,1]);
+
+
+

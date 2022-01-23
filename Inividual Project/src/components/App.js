@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
+import React, { useState, useEffect } from 'react';
+import '../components/App.css';
 import Editor from './Editor';
 
 function App() {
   const [html, setHtml] = useState('');
   const [css, setCss] = useState('');
   const [js, setJs] = useState('');
+  const [srcDoc, setsrcDoc] = useState('');
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setsrcDoc(
+        `<html>
+          <body>${html}</body>
+          <style>${css}</style>
+          <script>${js}</script>
+        </html>`
+      )
+    }, 250)
+
+    return () => clearTimeout(timeout);
+  }, [html, css, js])
+
   return (
     <>
       <div className="pane top-pane">
@@ -29,6 +47,7 @@ function App() {
 
       <div className="bottom-pane">
         <iframe
+          srcDoc={srcDoc}
           title="output"
           santbox="allow-scripts"
           frameBorder="0"
