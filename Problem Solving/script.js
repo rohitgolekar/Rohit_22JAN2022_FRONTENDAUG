@@ -114,5 +114,57 @@ function sortarray(nums) {
 
 sortarray([0,3,7,2,5,8,4,6,0,1]);
 
+// Input: prices = [7,1,5,3,6,4]
+// Output: 7
+// Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+// Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+// Total profit is 4 + 3 = 7.
 
+function maxprofit(prices) {
+    let totalProfit = 0;
+    let perdayProfit;
+
+    for (let i = 0; i < prices.length; i++) {
+        perdayProfit = prices[i + 1] - prices[i];
+        if (prices[i + 1] - prices[i] > 0) {
+            totalProfit = totalProfit + perdayProfit;
+        }
+    }
+    console.log(totalProfit);
+}
+
+maxprofit([7, 1, 5, 3, 6, 4]);
+
+
+function rightRotate(arr, n) {
+    let empty = [];
+    for (let i = n - 1; i < arr.length; i++) {
+        empty.push(arr[i]);
+    }
+
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j] < n) {
+            empty.push(arr[j]);
+        }
+    }
+    console.log("empty", empty);
+}
+rightRotate([1, 2, 3, 4, 5], 3);
+
+
+// Input: nums = [1,2,3]
+// Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+function subset(arr){
+    let empty = [[]];
+    for(let i = 0; i < arr.length; i++){
+            empty.push([arr[i]]);
+            for (let j = i; j < arr.length; j++){
+                if(j >= i){
+                    empty.push([arr[j], arr[j + 1]]);
+                }
+            }
+    }
+    console.log(empty);
+}
 

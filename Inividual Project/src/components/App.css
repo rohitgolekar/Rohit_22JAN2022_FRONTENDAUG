@@ -44,6 +44,21 @@ body {
 .editor-container.collapsed {
   flex-grow: 0;
 }
+
+.editor-container.collapsed .CodeMirror-scroll {
+  position: absolute;
+  overflow: hidden !important;
+}
+
+.expand-collapse-btn {
+  margin-left: .5rem;
+  background: none;
+  color: white;
+  border : none;
+  cursor: pointer;
+}
+
+
 /* .top-header {}
 .top-header .clear-all-btn {}
 .top-header .clear-all-btn:hover {}
