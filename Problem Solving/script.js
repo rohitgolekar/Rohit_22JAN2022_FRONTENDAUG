@@ -168,3 +168,81 @@ function subset(arr){
     console.log(empty);
 }
 
+
+
+// 25 JAN 2022
+
+// https://leetcode.com/problems/kth-largest-element-in-an-array/
+
+var findKthLargest = function(nums, k) {
+    let temp;
+   for(let a = 0; a < nums.length; a++){
+       for(let b = a; b < nums.length; b++){
+            if(nums[a] < nums[b]){
+                temp = nums[a];
+                nums[a] = nums[b]
+                nums[b] = temp
+            }
+     }
+   }
+
+   console.log(nums[k - 1]);
+};
+
+findKthLargest([3,2,1,5,6,4], 2)
+
+
+
+// Input: nums = [-1,0,1,2,-1,-4]
+// Output: [[-1,-1,2],[-1,0,1]]
+
+nums = [-1, 0, 1, 2, -1, -4]
+
+function threeSum(nums) {
+    var results = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let k = j + 1; k < nums.length; k++) {
+                if (nums[i] != nums[j] != nums[k]) {
+                    if (nums[i] + nums[j] + nums[k] === 0) {
+                            results.push([nums[i],nums[j],nums[k]]);
+                            results[results.length-1]
+                    }
+                }
+            }
+        }
+    }
+    console.log(results);
+};
+
+threeSum(nums);
+
+
+// Input
+
+// AAAA
+// BBBBB
+// ABABABAB
+// BABABA
+// AAABBB
+
+// Sample Output
+
+// 3
+// 4
+// 0
+// 0
+// 4
+
+function deletions(str){
+    let NoOfDel = 0;
+    for(let i = 0; i < str.length; i++){
+        if(str[i] === str[i + 1]){
+            NoOfDel = NoOfDel + 1;
+        }
+    }
+    console.log(NoOfDel);
+}
+
+deletions("AAABBB")

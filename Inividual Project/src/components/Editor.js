@@ -17,14 +17,15 @@ function Editor(props) {
     const handleChange = (editor, data, value) => {
         onChange(value);
     }
+    
     return (
         <div className={`editor-container ${open ? '' : 'collapsed'}`}>
             <div className='editor-title'>
                 {displayName}
                 <button
                     onClick={() => setOpen(prevOpen => !prevOpen)}>
-                        <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
-                    </button>
+                    <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
+                </button>
             </div>
 
             <ControlledEditor

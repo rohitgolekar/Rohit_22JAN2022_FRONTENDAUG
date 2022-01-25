@@ -1,12 +1,13 @@
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
+// import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import React, { useState, useEffect } from 'react';
 import '../components/App.css';
 import Editor from './Editor';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 function App() {
-  const [html, setHtml] = useState('');
-  const [css, setCss] = useState('');
-  const [js, setJs] = useState('');
+  const [html, setHtml] = useLocalStorage('html', '');
+  const [css, setCss] = useLocalStorage('css', '');
+  const [js, setJs] = useLocalStorage('js', '');
   const [srcDoc, setsrcDoc] = useState('');
 
   useEffect(() => {
