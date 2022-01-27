@@ -246,3 +246,44 @@ function deletions(str){
 }
 
 deletions("AAABBB")
+
+
+// https://www.hackerrank.com/challenges/special-palindrome-again/problem
+
+let s = "abcbaba";
+
+function palindrom(s) {
+    let arr1 = [];
+
+    for (let j = 0; j < s.length; j++) {
+        arr1.push(s[j]);
+        if (s[j - 1] === s[j + 1]) {
+            arr1.push([s[j + 1], s[j], s[j - 1]]);
+        }
+        if (s[j] === s[j + 1]) {
+            arr1.push([s[j++], s[j + 1]]);
+        }
+    }
+    console.log(arr1);
+}
+
+palindrom(s);
+
+
+let emaildata = ["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"];
+
+
+function validEmail(emaildata) {
+    let final = [];
+    for (let i = 0; i < emaildata.length; i++) {
+        let domain = emaildata[i].substring(emaildata[i].lastIndexOf("@"));
+        let newemail = emaildata[i].replace(/[,.]/g, '');
+        let localname = newemail.substring(0, newemail.lastIndexOf("+"));
+        final.push(localname + domain);
+    }
+
+    let validemail = [...new Set(final)]
+    console.log(validemail.length);
+}
+
+validEmail(emaildata);
