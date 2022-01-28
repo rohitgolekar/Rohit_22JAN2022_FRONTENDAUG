@@ -6,29 +6,27 @@
 nums1 = [1, 2, 3, 0, 0, 0];
 nums2 = [2, 5, 6];
 
-function margesortarray(nums1, nums2) {
-    // debugger;
-    let merged = [];
-    let i = 0;
-    let j = 0;
-    let k = 0;
-    // console.log(nums1.length + nums2.length)
-    while (k < (nums1.length + nums2.length)) {
-        let isnums1 = i >= nums1.length;
-        let isnums2 = j >= nums2.length;
-        if (!isnums1 && (isnums2 || (nums1[i] < nums2[j]))) {
-            merged[k] = nums1[i];
+function margesortarray(nums1, nums2,m ,n) {
+    for(let i = m; i < m + n;){
+        for(let j = 0; j < n; j++){
+            nums1[i] = nums1[i] + nums2[j];
             i++;
-        } else {
-            merged[k] = nums2[j];
-            j++
         }
-        k++
     }
-    console.log(merged);
+    
+    for(let k = 0; k < nums1.length; k++){
+        for(let l = k; l < nums1.length; l++){
+                if(nums1[k] > nums1[l]){
+                    let x = nums1[k];
+                    nums1[k] = nums1[l];
+                    nums1[l] = x;
+                }
+        }
+    }
+    console.log(nums1);
 }
 
-margesortarray(nums1, nums2);
+margesortarray([1,2,3,0,0,0], [2,5,6], 3, 3);
 
 
 
@@ -87,7 +85,7 @@ function sortcolors(arr) {
     console.log(arr);
 }
 
-let arr = [2,0,2,1,1,0];
+let arr = [2, 0, 2, 1, 1, 0];
 sortcolors(arr);
 
 
@@ -104,15 +102,16 @@ function sortarray(nums) {
             }
         }
     }
-    for(let i = 0; i < nums.length; i++){
-        if(nums[i + 1] === nums[i] + 1){
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i + 1] === nums[i] + 1) {
             count = count + 1;
         }
     }
-    console.log(count);
+    console.log("count", count);
 }
 
-sortarray([0,3,7,2,5,8,4,6,0,1]);
+sortarray([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]);
+
 
 // Input: prices = [7,1,5,3,6,4]
 // Output: 7
@@ -155,18 +154,21 @@ rightRotate([1, 2, 3, 4, 5], 3);
 // Input: nums = [1,2,3]
 // Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 
-function subset(arr){
+function subset(arr) {
     let empty = [[]];
-    for(let i = 0; i < arr.length; i++){
-            empty.push([arr[i]]);
-            for (let j = i; j < arr.length; j++){
-                if(j >= i){
-                    empty.push([arr[j], arr[j + 1]]);
-                }
+    empty.push(arr);
+    for (let i = 0; i < arr.length; i++) {
+        empty.push([arr[i]]);
+        for (let j = i; j < arr.length; j++) {
+            if (arr[j] > arr[i]) {
+                empty.push([arr[i], arr[j]]);
             }
+        }
     }
     console.log(empty);
 }
+
+subset([1,2,3])
 
 
 
@@ -174,22 +176,22 @@ function subset(arr){
 
 // https://leetcode.com/problems/kth-largest-element-in-an-array/
 
-var findKthLargest = function(nums, k) {
+var findKthLargest = function (nums, k) {
     let temp;
-   for(let a = 0; a < nums.length; a++){
-       for(let b = a; b < nums.length; b++){
-            if(nums[a] < nums[b]){
+    for (let a = 0; a < nums.length; a++) {
+        for (let b = a; b < nums.length; b++) {
+            if (nums[a] < nums[b]) {
                 temp = nums[a];
                 nums[a] = nums[b]
                 nums[b] = temp
             }
-     }
-   }
+        }
+    }
 
-   console.log(nums[k - 1]);
+    console.log(nums[k - 1]);
 };
 
-findKthLargest([3,2,1,5,6,4], 2)
+findKthLargest([3, 2, 1, 5, 6, 4], 2)
 
 
 
@@ -206,8 +208,8 @@ function threeSum(nums) {
             for (let k = j + 1; k < nums.length; k++) {
                 if (nums[i] != nums[j] != nums[k]) {
                     if (nums[i] + nums[j] + nums[k] === 0) {
-                            results.push([nums[i],nums[j],nums[k]]);
-                            results[results.length-1]
+                        results.push([nums[i], nums[j], nums[k]]);
+                        results[results.length - 1]
                     }
                 }
             }
@@ -235,10 +237,10 @@ threeSum(nums);
 // 0
 // 4
 
-function deletions(str){
+function deletions(str) {
     let NoOfDel = 0;
-    for(let i = 0; i < str.length; i++){
-        if(str[i] === str[i + 1]){
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i + 1]) {
             NoOfDel = NoOfDel + 1;
         }
     }
@@ -246,6 +248,7 @@ function deletions(str){
 }
 
 deletions("AAABBB")
+
 
 
 // https://www.hackerrank.com/challenges/special-palindrome-again/problem
@@ -287,3 +290,30 @@ function validEmail(emaildata) {
 }
 
 validEmail(emaildata);
+
+
+
+ratings = [3,0,1];
+
+function candy(ratings){
+let candy = 0;
+
+for(let i = 0; i < ratings.length; i++){
+        candy = candy + 1;
+        if(ratings[i] > ratings[i + 1]){
+            candy = candy + 1
+        } else if(ratings[i] > ratings[i - 1]){
+            candy = candy + 1
+        } else if(ratings[i] == ratings[i + 1]){
+            candy = candy + 0;
+    }
+}
+
+console.log("candy", candy);
+
+}
+
+candy(ratings)
+
+
+
